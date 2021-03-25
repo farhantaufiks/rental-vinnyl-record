@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button><a href="/vinnyl/add">Add Vinnyl</a></button>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Genre</th>
+            <th>Singer</th>
+            <th>Released Year</th>
+            <th>Cover</th>
+            <th>Restriction Age</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+        <% vinnyl.forEach( el => { %>
+            <tr>
+                <td><%= el.name %></td>
+                <td><%= el.genre %></td>
+                <td><%= el.singer %></td>
+                <td><%= el.released_year %></td>
+                <td><img src="<%= el.cover_url %>"></td>
+                <td><%= el.restriction_age %></td>
+                <td><%= el.price_perday %></td>
+                <td><a href="/vinnyl/delete/<%= el.id %>">Delete</a>|| <a href="/vinnyl/edit/<%= el.id %>">Edit</a></td>
+            </tr>
+            <% }) %>
+    </table>
+</body>
+</html>
