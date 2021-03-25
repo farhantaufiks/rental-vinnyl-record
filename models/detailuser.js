@@ -15,14 +15,33 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   DetailUser.init({
-    status: DataTypes.STRING,
-    name: DataTypes.STRING,
-    password: DataTypes.STRING,
-    KTP: DataTypes.STRING,
-    age: DataTypes.INTEGER
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {msg: "Nama Tidak Boleh Kosong"}
+      }
+    },
+    KTP: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {msg: "KTP/ Nomor Identitas Tidak Boleh Kosong"}
+      }
+    },
+    age:  {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {msg: "Umur Tidak Boleh Kosong"},
+        min: 13 
+      }
+    },
   }, {
     sequelize,
     modelName: 'DetailUser',
+    hooks: {
+      beforeCreate: (user, options) => {
+        user.mood = 'happy';
+      },
+    },
   });
   return DetailUser;
 };

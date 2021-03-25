@@ -1,0 +1,35 @@
+<%- include('./partials/head', { title: "List User"}) %> 
+<%- include('./partials/navbar') %> 
+
+
+<body>
+  <h3>List User</h3><br>
+
+  <table style="margin:auto ;min-width: 60%; max-width: 80%;" class="table table-bordered" >
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">status</th>
+        <th scope="col">username</th>
+        <th scope="col">email</th>
+        <th scope="col">DetailUserId</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <% user.forEach(el => { %>
+      <tr>
+        <td><%= el.status %></td>
+        <td><%= el.username %></td>
+        <td><%= el.email %></td>
+        <td><%= el.DetailUserId %></td>
+        <td>
+          <a href="/user/<%=el.id%>/delete">Delete</a>
+          <a href="/user/<%=el.id%>">See Rented</a>
+        </td>
+      </tr>
+    <% }) %> 
+
+
+  </table>
+
+</body>
+</html>

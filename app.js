@@ -14,9 +14,14 @@ app.use(session({
   saveUninitialized: true,
 }))
 
+app.get('/', (req, res) => {
+  res.render('homepage')
+})
 app.get('/login', Authenticator.loginGet)
 app.post('/login', Authenticator.loginPost)
 app.get('/logout', Authenticator.logout)
+app.get('/register', Authenticator.getRegister)
+app.post('/register', Authenticator.postRegister)
 
 const isLoginMiddleware = (req,res,next) =>{
   if(req.session.isLogin == true){
@@ -25,27 +30,20 @@ const isLoginMiddleware = (req,res,next) =>{
     res.redirect('/login')
   }
 }
-const isAdminMiddleware = (req,res,next) =>{
-  if(req.session.isAdmin == true){
-    next();
-  } else {
-    res.render('userSandbox')
-  }
-}
 
 
 app.use(isLoginMiddleware)
 
-
-app.get('/', isAdminMiddleware, (req, res) => {
-  res.send('selamat datang di aplikasi peminjaman vinnyl record')
-})
-app.get('/home', isAdminMiddleware, (req, res) => {
-  res.send('Anda telah masuk sebagai Admin')
-})
-app.get('/user/1', (req, res) => {res.render('userSandbox')})
-
 app.use(routes)
+
+// app.get('/', isAdminMiddleware, (req, res) => {
+//   res.send('selamat datang di aplikasi peminjaman vinnyl record')
+// })
+// app.get('/home', isAdminMiddleware, (req, res) => {
+//   res.send('Anda telah masuk sebagai Admin')
+// })
+// app.get('/user/1', (req, res) => {res.render('userSandbox')})
+
 
 
 app.listen(port, () => {

@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<%- include('./partials/head', { title: "Edit Vinnyl"}) %> 
+
+<%- include('./partials/navbar') %> 
+
+
 <body>
     <form action="/vinnyl/edit/<%= vinnyl.id %>" method="POST">
         <p>Name</p>
@@ -21,7 +18,7 @@
         <p>Restriction Age</p>
         <input type="number" name="restriction_age" id="restriction_age" value="<%= vinnyl.restriction_age %>">
         <p>Price</p>
-        <input type="number" name="price" id="price" value="<%= vinnyl.price_perday %>"><br>
+        <input type="number" name="price_perday" id="price_perday" value="<%= vinnyl.price_perday %>"><br>
         <button type="submit">Submit</button>
         <button><a href="/vinnyl">Cancel</a></button>
     </form>

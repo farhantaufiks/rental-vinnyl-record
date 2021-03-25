@@ -28,6 +28,9 @@ module.exports = {
       return_date: {
         type: Sequelize.DATE
       },
+      day_borrow: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
