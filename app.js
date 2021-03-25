@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const session = require('express-session')
 const port = 3000
+const routes = require('./routers/index')
 const Authenticator = require('./controllers/authenticator')
 
 app.use(express.urlencoded({extended: false}))
@@ -24,7 +25,6 @@ const isLoginMiddleware = (req,res,next) =>{
     res.redirect('/login')
   }
 }
-
 const isAdminMiddleware = (req,res,next) =>{
   if(req.session.isAdmin == true){
     next();
@@ -32,6 +32,7 @@ const isAdminMiddleware = (req,res,next) =>{
     res.render('userSandbox')
   }
 }
+
 
 app.use(isLoginMiddleware)
 
@@ -43,6 +44,8 @@ app.get('/home', isAdminMiddleware, (req, res) => {
   res.send('Anda telah masuk sebagai Admin')
 })
 app.get('/user/1', (req, res) => {res.render('userSandbox')})
+
+app.use(routes)
 
 
 app.listen(port, () => {
