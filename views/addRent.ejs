@@ -1,0 +1,29 @@
+<%- include ('./partials/head',{title: 'Add Rent' }) %>
+  <%- include ('./partials/navbar') %>
+  <body>
+    <div style="margin: auto; text-align: center;">
+      <h1> Rent this Song </h1><br><h1><%= data.name %> </h1><br>
+      <img src="<%= data.cover_url %>" width="200", height="200">
+    </div>
+    <form action="/vinnyl/addrent/<%= data.id %>" method="POST" style="max-width: 60%; min-width: 40%; margin: auto;">
+      <div>
+        <label for="rent">Customer</label>
+        <select name="UserId" id="UserId" class="form-control">
+          <option selected disabled value=null> --SELECT-- </option>
+          <% allCustomer.forEach(el=>{ %>
+          <option value="<%= el.id %>"> <%= el.DetailUser.name %> </option>
+          <% }) %>
+        </select>
+      </div>
+      <br>
+      <div style="margin: auto; text-align: center;">
+        <label for="borrow_date">borrow Date</label><br>
+        <input type="date" name="borrow_date"><br>
+        <label for="return_date">Return Date</label><br>
+        <input type="date" name="return_date"/>
+      <br>
+      <input class="btn btn-primary mb-3" type="submit" value="Submit!" />
+    </form>
+
+  </body>
+</html>

@@ -1,0 +1,29 @@
+[
+  {
+    "name": "River",
+    "genre": "JPop",
+    "singer": "JKT48",
+    "released_year": 2013,
+    "cover_url": "https://upload.wikimedia.org/wikipedia/id/9/91/JKT48River.jpg",
+    "restriction_age": 13,
+    "price_perday": 10000
+  },
+  {
+    "name": "Sabamba",
+    "genre": "Instrumental",
+    "singer": "Depapepe",
+    "released_year": 2004,
+    "cover_url": "https://upload.wikimedia.org/wikipedia/id/thumb/e/ee/DEPAPEPE.jpg/220px-DEPAPEPE.jpg",
+    "restriction_age": 8,
+    "price_perday": 15000
+  },
+  {
+    "name": "Kiss the Rain",
+    "genre": "Instrumental",
+    "singer": "Yiruma",
+    "released_year": 1997,
+    "cover_url": "https://i.ytimg.com/an/RZo-7xnw2uk/3aabe7a0-ea99-401d-b095-be0b3ddfedaa_mq.jpg?v=59fa0756",
+    "restriction_age": 13,
+    "price_perday": 20000
+  }
+]
