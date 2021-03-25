@@ -13,6 +13,17 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       VinnylMusic.belongsToMany(models.User, { through: "UserVinnyl" })
     }
+    Rating(){
+      if (this.restriction_age <= 10){
+        return "Everyone"
+      } else if(this.restriction_age <= 13){
+        return "PG13"
+      } else if(this.restriction_age <= 17){
+        return "Teens"
+      } else {
+        return "Adult"
+      }
+    }
   };
   VinnylMusic.init({
     name: DataTypes.STRING,

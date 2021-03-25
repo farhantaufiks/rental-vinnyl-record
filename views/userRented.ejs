@@ -1,0 +1,41 @@
+<%- include('./partials/head', { title: "Edit Vinnyl"}) %> 
+
+<body>
+  
+  <table style="margin:auto ;min-width: 60%; max-width: 80%;" class="table table-bordered" >
+    <div style="max-width: 60%; min-width: 40%; margin: auto;">
+      <br><br><h3>Hi <%= data.DetailUser.name %> This is your currently Rented List!!</h3><br>
+    </div>
+    
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">cover</th>
+        <th scope="col">name record</th>
+        <th scope="col">singer</th>
+        <th scope="col">genre</th>
+        <th scope="col">borrow data</th>
+        <th scope="col">return date</th>
+        <th scope="col">price_perday</th>
+      </tr>
+    </thead>
+    <% data.VinnylMusics.forEach(el => { %> 
+      <tr>
+        <td><img width="100" height="100" src=<%= el.cover_url %>> </td>
+        <td><%= el.name %></td>
+        <td><%= el.singer %></td>
+        <td><%= el.genre %></td>
+        <td><%= el.UserVinnyl.borrow_date %></td>
+        <td><%= el.UserVinnyl.return_date %></td>
+        <td><%= el.price_perday %></td>
+      </tr>
+      <% }) %> 
+      
+    </table>
+    <div class="form-group" style="max-width: 60%; min-width: 40%; margin: auto;">
+    <form action="/user/<%= data.id %>/mail" method="post"> <br>
+      <button class="btn btn-primary" type="submit">Click here</button><a> to send totalPrice you should pay to your Email!</a><br>
+    </form><br>
+    <a href="/logout"><button class="btn btn-danger">Logout</button></a>
+  </div>
+  </body>
+  </html>

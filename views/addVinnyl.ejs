@@ -1,29 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<%- include('./partials/head', { title: "Add Vinnyl"}) %> 
+
+<%- include('./partials/navbar') %> 
+
 <body>
+    <div class="form-group" style="max-width: 60%; min-width: 40%; margin: auto;">
+        <br><br><h1>Add New Vinnyl Record here!</h1>
     <form action="/vinnyl/add" method="POST">
         <p>Name</p>
-        <input type="text" name="name" id="name">
+        <input class="form-control" type="text" name="name" id="name">
         <p>Genre</p>
-        <input type="text" name="genre" id="genre">
+        <input class="form-control" type="text" name="genre" id="genre">
         <p>Singer</p>
-        <input type="text" name="singer" id="singer">
+        <input class="form-control" type="text" name="singer" id="singer">
         <p>Released Year</p>
-        <input type="number" name="released_year" id="released_year">
+        <input class="form-control" type="number" name="released_year" id="released_year">
         <p>Cover</p>
-        <input type="url" name="cover" id="cover">
+        <input class="form-control" type="url" name="cover_url" id="cover">
         <p>Restriction Age</p>
-        <input type="number" name="restriction_age" id="restriction_age">
+        <input class="form-control" type="number" name="restriction_age" id="restriction_age">
         <p>Price</p>
-        <input type="number" name="price" id="price"><br>
-        <button type="submit">Submit</button>
-        <button><a href="/vinnyl">Cancel</a></button>
+        <input class="form-control" type="number" name="price_perday" id="price"><br>
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <a href="/vinnyl"><button class="btn btn-danger">Cancel</button></a>
     </form>
+    </div>
 </body>
 </html>

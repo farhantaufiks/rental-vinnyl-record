@@ -1,34 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<%- include('./partials/head', { title: "Edit Vinnyl"}) %> 
+
+<%- include('./partials/navbar') %> 
+
 <body>
-    <button><a href="/vinnyl/add">Add Vinnyl</a></button>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Genre</th>
-            <th>Singer</th>
-            <th>Released Year</th>
-            <th>Cover</th>
-            <th>Restriction Age</th>
-            <th>Price</th>
-            <th>Action</th>
-        </tr>
+    <div style="margin:auto ;min-width: 60%; max-width: 80%;">
+        <br><h3>List Available Vinnyl Record</h3><br>
+        <a href="/vinnyl/add"><button class="btn btn-primary">Add Vinnyl</button></a>
+    </div><br>
+    <table style="margin:auto ;min-width: 60%; max-width: 80%;" class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Singer</th>
+                <th scope="col">Released Year</th>
+                <th scope="col">Cover</th>
+                <th scope="col">Restriction Age and Rating</th>
+                <th scope="col">Price</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
         <% vinnyl.forEach( el => { %>
             <tr>
                 <td><%= el.name %></td>
                 <td><%= el.genre %></td>
                 <td><%= el.singer %></td>
                 <td><%= el.released_year %></td>
-                <td><img src="<%= el.cover_url %>"></td>
-                <td><%= el.restriction_age %></td>
+                <td><img width="100" height="100" src="<%= el.cover_url %>"></td>
+                <td><%= el.restriction_age %> with Rating <%= el.Rating() %> </td>
                 <td><%= el.price_perday %></td>
-                <td><a href="/vinnyl/delete/<%= el.id %>">Delete</a>|| <a href="/vinnyl/edit/<%= el.id %>">Edit</a></td>
+                <td><a href="/vinnyl/edit/<%= el.id %>"><button class="btn btn-primary">Edit</button></a>
+                    <a href="/vinnyl/delete/<%= el.id %>"><button class="btn btn-danger">Delete</button></a>
+                    <a href="/vinnyl/addrent/<%= el.id %>"><button class="btn btn-secondary">Rent IT!</button></a>
+                </td>
             </tr>
             <% }) %>
     </table>
