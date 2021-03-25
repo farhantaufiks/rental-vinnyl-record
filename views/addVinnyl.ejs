@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/vinnyl/add" method="POST">
+        <p>Name</p>
+        <input type="text" name="name" id="name">
+        <p>Genre</p>
+        <input type="text" name="genre" id="genre">
+        <p>Singer</p>
+        <input type="text" name="singer" id="singer">
+        <p>Released Year</p>
+        <input type="number" name="released_year" id="released_year">
+        <p>Cover</p>
+        <input type="url" name="cover" id="cover">
+        <p>Restriction Age</p>
+        <input type="number" name="restriction_age" id="restriction_age">
+        <p>Price</p>
+        <input type="number" name="price" id="price"><br>
+        <button type="submit">Submit</button>
+        <button><a href="/vinnyl">Cancel</a></button>
+    </form>
+</body>
+</html>

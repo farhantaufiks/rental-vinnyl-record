@@ -1,13 +1,12 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const routes = require('./routers/index')
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({extended: false}))
 
-app.get('/', (req, res) => {
-  res.send('selamat datang di aplikasi peminjaman vinnyl record')
-})
+app.use(routes)
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

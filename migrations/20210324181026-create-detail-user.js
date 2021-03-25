@@ -1,32 +1,26 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('VinnylMusics', {
+    await queryInterface.createTable('DetailUsers', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      status: {
+        type: Sequelize.STRING
+      },
       name: {
         type: Sequelize.STRING
       },
-      genre: {
+      password: {
         type: Sequelize.STRING
       },
-      singer: {
+      KTP: {
         type: Sequelize.STRING
       },
-      released_year: {
-        type: Sequelize.DATE
-      },
-      cover_url: {
-        type: Sequelize.STRING
-      },
-      restriction_age: {
-        type: Sequelize.INTEGER
-      },
-      price_perday: {
+      age: {
         type: Sequelize.INTEGER
       },
       createdAt: {
@@ -40,6 +34,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('VinnylMusics');
+    await queryInterface.dropTable('DetailUsers');
   }
 };
