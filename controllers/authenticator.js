@@ -1,5 +1,9 @@
 const {User, DetailUser, UserVinnyl, VinnylMusic} = require('../models')
 
+const bcrypt = require('bcryptjs')
+let salt = bcrypt.genSaltSync(10)
+// let hash = bcrypt.hashSync(`${password}`, salt) // password diganti dari database yang sama dengan email nanti
+// if(bcrypt.compareSync(req.body.password, hash) == true){
 class Authenticator{
 
   static loginGet(req,res) {
@@ -13,7 +17,8 @@ class Authenticator{
     })
       .then(data => {
         if(data){
-          if(data.password == req.body.password){
+          if(bcrypt.compareSync(req.body.password, data.password)){
+          // if(data.password == req.body.password){
             req.session.isLogin = true
             req.session.idUser = data.id
             if(data.status == 'admin'){
@@ -43,18 +48,26 @@ class Authenticator{
     res.render('register')
   }
   static postRegister(req, res) {
-    DetailUser.create({
-      name:req.body.name,
-      KTP:req.body.ktp,
-      age:req.body.age,
-    })
+    User.findAll({where:{email:req.body.email}})
+      .then((data) => {
+        if (data.length != 0){
+          let err = {message: "Email sudah terdaftar silahkan registrasi ulang"}
+          throw err
+        } else {
+          return DetailUser.create({
+            name:req.body.name,
+            KTP:req.body.ktp,
+            age:req.body.age,
+          })
+        }
+      }) 
     .then(data => {
       console.log('DetailUserberhasildibuat')
       return User.create({
             status:req.body.status,
             username:req.body.username,
             email:req.body.email,
-            password:req.body.password,
+            password: bcrypt.hashSync(req.body.password, salt),
             DetailUserId: data.id
         })
     })

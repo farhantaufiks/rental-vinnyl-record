@@ -1,24 +1,20 @@
 <%- include('./partials/head', { title: "login"}) %> 
 
-<nav>
-  <ul>
-    <li class="navlink"><a href="/register" >Register</a></li>
-  </ul>
-</nav>
-
-
 <body>
   <body>
-    <div class="container">
-      <h1>Login</h1>
-        <form action="/login" method="POST" style="max-width: 60%; min-width: 40%; margin: auto;">
+    <div class="form-group" style="max-width: 60%; min-width: 40%; margin: auto;">
+      <br><br><h1>Login</h1>
+        <form action="/login" method="POST">
             <label>Mail</label><br>
-            <input name='mail' type="text"><br>
+            <input name='mail' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"><br>
             <label>Password</label><br>
-            <input name='password' type="password"><br>
-            <button type="submit">Log in</button>
+            <input name='password' type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"><br>
+            <button type="submit" class="btn btn-primary">Log in</button>
+            To Register <a href="/register" >Click Here</a>
         </form>
     </div>     
+    <div class="container" style="margin: auto;">
+    </div>
 </body>
 </body>
 </html>

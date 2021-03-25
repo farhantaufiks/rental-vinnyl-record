@@ -1,13 +1,12 @@
 <%- include('./partials/head', { title: "Edit Vinnyl"}) %> 
 
 <body>
-  <form action="/user/<%= data.id %>/mail" method="post"> 
-    <button type="submit">Click here</button><a> to send totalPrice you should pay to your Email!</a>
-  </form>
-
+  
   <table style="margin:auto ;min-width: 60%; max-width: 80%;" class="table table-bordered" >
-    <h3>Hi <%= data.DetailUser.name %> This is your currently Rented List!!</h3><br>
-    <h3><a href="/logout">Logout</a></h3>
+    <div style="max-width: 60%; min-width: 40%; margin: auto;">
+      <br><br><h3>Hi <%= data.DetailUser.name %> This is your currently Rented List!!</h3><br>
+    </div>
+    
     <thead class="thead-dark">
       <tr>
         <th scope="col">cover</th>
@@ -29,8 +28,14 @@
         <td><%= el.UserVinnyl.return_date %></td>
         <td><%= el.price_perday %></td>
       </tr>
-    <% }) %> 
-
-  </table>
-</body>
-</html>
+      <% }) %> 
+      
+    </table>
+    <div class="form-group" style="max-width: 60%; min-width: 40%; margin: auto;">
+    <form action="/user/<%= data.id %>/mail" method="post"> <br>
+      <button class="btn btn-primary" type="submit">Click here</button><a> to send totalPrice you should pay to your Email!</a><br>
+    </form><br>
+    <a href="/logout"><button class="btn btn-danger">Logout</button></a>
+  </div>
+  </body>
+  </html>

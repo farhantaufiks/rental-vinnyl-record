@@ -3,7 +3,10 @@
 <%- include('./partials/navbar') %> 
 
 <body>
-    <button><a href="/vinnyl/add">Add Vinnyl</a></button>
+    <div style="margin:auto ;min-width: 60%; max-width: 80%;">
+        <br><h3>List Available Vinnyl Record</h3><br>
+        <a href="/vinnyl/add"><button class="btn btn-primary">Add Vinnyl</button></a>
+    </div><br>
     <table style="margin:auto ;min-width: 60%; max-width: 80%;" class="table table-bordered">
         <thead class="thead-dark">
             <tr>
@@ -26,9 +29,9 @@
                 <td><img width="100" height="100" src="<%= el.cover_url %>"></td>
                 <td><%= el.restriction_age %> with Rating <%= el.Rating() %> </td>
                 <td><%= el.price_perday %></td>
-                <td><a href="/vinnyl/edit/<%= el.id %>">Edit</a> |
-                    <a href="/vinnyl/delete/<%= el.id %>">Delete</a> | 
-                    <a href="/vinnyl/addrent/<%= el.id %>">Rent IT!</a>
+                <td><a href="/vinnyl/edit/<%= el.id %>"><button class="btn btn-primary">Edit</button></a>
+                    <a href="/vinnyl/delete/<%= el.id %>"><button class="btn btn-danger">Delete</button></a>
+                    <a href="/vinnyl/addrent/<%= el.id %>"><button class="btn btn-secondary">Rent IT!</button></a>
                 </td>
             </tr>
             <% }) %>
